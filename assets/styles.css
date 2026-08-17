@@ -5697,6 +5697,25 @@ body.home-page .manifesto .kicker {
   line-height: 1.6;
 }
 
+/* Contact form inline error (shown when /api/contact rejects a submission) */
+.contact-form-error {
+  margin: 0;
+  padding: 14px 18px;
+  border: 1px solid rgba(220, 90, 90, 0.4);
+  border-left: 3px solid #dc5a5a;
+  border-radius: 6px;
+  background: rgba(220, 90, 90, 0.08);
+  color: #f0b4b4;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.contact-form-submit:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
 .contact-form-submit {
   align-self: center;
   display: inline-flex;

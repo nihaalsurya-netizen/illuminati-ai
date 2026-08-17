@@ -135,13 +135,11 @@
 
       <section class="contact-form-section">
         <form
+          id="contactForm"
           name="contact"
           method="POST"
-          data-netlify="true"
-          netlify-honeypot="bot-field"
-          action="/thank-you.html"
+          action="/api/contact"
           class="contact-form">
-          <input type="hidden" name="form-name" value="contact">
           <p class="hidden-field"><label>Don't fill this out if you're human: <input name="bot-field" /></label></p>
 
           <div class="contact-form-row">
@@ -212,6 +210,8 @@
               <option value="Other">Other</option>
             </select>
           </div>
+
+          <p id="contactFormError" class="contact-form-error" role="alert" style="display:none;"></p>
 
           <button type="submit" class="contact-form-submit">
             <span>Send Message</span>
@@ -374,5 +374,68 @@
 <script src="assets/cart.js"></script>
 <script src="assets/razorpay-checkout.js"></script>
 <script src="assets/cookie-consent.js"></script>
+
+<!-- Contact form → /api/contact (Resend). Replaces Netlify Forms. -->
+<script>
+(function () {
+  var form = document.getElementById('contactForm');
+  if (!form) return;
+
+  var errorEl  = document.getElementById('contactFormError');
+  var submitEl = form.querySelector('.contact-form-submit');
+  var labelEl  = submitEl ? submitEl.querySelector('span') : null;
+  var originalLabel = labelEl ? labelEl.textContent : 'Send Message';
+
+  function showError(msg) {
+    if (!errorEl) { alert(msg); return; }
+    errorEl.textContent = msg;
+    errorEl.style.display = 'block';
+  }
+
+  function clearError() {
+    if (errorEl) errorEl.style.display = 'none';
+  }
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    clearError();
+
+    // Let the browser's own required/type validation run first.
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    var payload = {};
+    new FormData(form).forEach(function (value, key) { payload[key] = value; });
+
+    if (submitEl) submitEl.disabled = true;
+    if (labelEl) labelEl.textContent = 'Sending…';
+
+    try {
+      var response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      var data = {};
+      try { data = await response.json(); } catch (err) { /* non-JSON response */ }
+
+      if (response.ok) {
+        window.location.href = '/thank-you.html';
+        return;
+      }
+
+      showError(data.error || 'Could not send your message. Please email us directly at illuminati.ai@illuminatiai.tech');
+    } catch (err) {
+      showError('Network error. Please check your connection or email us at illuminati.ai@illuminatiai.tech');
+    }
+
+    if (submitEl) submitEl.disabled = false;
+    if (labelEl) labelEl.textContent = originalLabel;
+  });
+})();
+</script>
 </body>
 </html>
