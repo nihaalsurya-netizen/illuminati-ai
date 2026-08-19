@@ -4991,6 +4991,12 @@ body.home-page .manifesto .kicker {
   line-height: 1.1;
 }
 
+/* Text-based pricing (e.g. "Custom Pricing") — smaller so it holds one line
+   next to the numeric amounts on the other service cards. */
+.pricing-amount--custom {
+  font-size: 1.5rem;
+}
+
 .service-cta-btn {
   display: inline-block;
   margin-top: 1rem;
@@ -5170,6 +5176,10 @@ body.home-page .manifesto .kicker {
 @media (max-width: 768px) {
   .pricing-amount {
     font-size: 1.75rem;
+  }
+
+  .pricing-amount--custom {
+    font-size: 1.35rem;
   }
 
   .product-early-bird {

@@ -6,6 +6,7 @@
 
 Illuminati AI is a Mumbai-based AI engineering firm founded by Monish Shah in 2026, evolving from Illuminati Media (established 2018). We specialize in:
 
+- **Amazon Advertising** — Fully managed Sponsored Ads, Amazon DSP, retargeting and ACoS/ROAS reporting
 - **Custom AI Agents** — Bespoke single-purpose agents for specific business functions
 - **Agentic Systems & Workflows** — Multi-agent orchestration for end-to-end automation
 - **AI Infrastructure Engineering** — Private AI brains, retrieval pipelines, vector databases
@@ -16,7 +17,7 @@ Illuminati AI is a Mumbai-based AI engineering firm founded by Monish Shah in 20
 ## Key Pages
 
 - [Homepage](https://illuminatiai.tech/): Company overview and value proposition
-- [Services](https://illuminatiai.tech/services.html): Six tiers of AI services with pricing
+- [Services](https://illuminatiai.tech/services.html): Seven tiers of AI services with pricing
 - [Products](https://illuminatiai.tech/products.html): Creator OS and Content Automation Suite (coming soon)
 - [How It Works](https://illuminatiai.tech/how-it-works.html): 3-phase implementation process
 - [About](https://illuminatiai.tech/about.html): Company history and founder bio
@@ -27,6 +28,7 @@ Illuminati AI is a Mumbai-based AI engineering firm founded by Monish Shah in 20
 
 All prices in Indian Rupees (INR), exclusive of GST:
 
+- Amazon Advertising: Custom pricing
 - Custom AI Agents: Starting from ₹50,000
 - AI Strategy & Audit: Starting from ₹50,000
 - OpenClaw Setup: Starting from ₹1,00,000
