@@ -877,19 +877,23 @@ function initServicesCardSlide() {
   const allCards = Array.from(document.querySelectorAll('.services-grid .service-card'));
   if (!allCards.length) return;
 
-  const config = [
-    { idx: 0, dir: 'slide-up-card',          gateHero: true  },
-    { idx: 1, dir: 'slide-up-card',          gateHero: true  },
-    { idx: 2, dir: 'slide-direction--left',  gateHero: false }, // AI Infrastructure Engineering
-    { idx: 3, dir: 'slide-direction--right', gateHero: false }, // OpenClaw Setup
-    { idx: 4, dir: 'slide-direction--up',    gateHero: false }, // AI Strategy & Audit
-    { idx: 5, dir: 'slide-direction--up',    gateHero: false }  // Website Engineering
-  ];
+  // Derived from the live card list rather than a fixed-length table.
+  // A fixed table silently stranded every card past its last index at
+  // opacity:0 (the desktop IntersectionObserver skips .reveal.delay-N on
+  // purpose, so nothing else reveals them). Adding a service to
+  // services.html must never leave a card invisible again.
+  //
+  // First two cards sit above the fold and wait for the hero intro;
+  // everything after cycles through the three slide directions.
+  const CYCLE = ['slide-direction--left', 'slide-direction--right', 'slide-direction--up'];
 
   // Capture intended document-relative top BEFORE applying transforms.
-  const entries = config
-    .map(c => ({ card: allCards[c.idx], dir: c.dir, gateHero: c.gateHero }))
-    .filter(e => e.card)
+  const entries = allCards
+    .map((card, i) => ({
+      card,
+      dir: i < 2 ? 'slide-up-card' : CYCLE[(i - 2) % CYCLE.length],
+      gateHero: i < 2
+    }))
     .map(e => {
       const rect = e.card.getBoundingClientRect();
       return Object.assign(e, { docTop: rect.top + window.scrollY });
