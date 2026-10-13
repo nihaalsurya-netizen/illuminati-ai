@@ -1,0 +1,36 @@
+.git/
+.vercel/
+.env*
+node_modules/
+.claude/
+netlify/
+*.md
+release-manifest.json
+.gitignore
+deno.lock
+DISABLED_FEATURES.md
+faq.html
+how-it-works.html
+Illuminati AI.bat
+Illuminati AI.url
+llms.txt
+netlify-form-prompt.txt.txt
+netlify.toml
+SEO_NOTES.md
+serve.ps1
+serve.ps1.cmd
+services.html
+assets/animations.js
+assets/app.js
+assets/cart.js
+assets/cookie-consent.js
+assets/founder.jpg
+assets/intro.js
+assets/orbit-field.js
+assets/particle-genesis.js
+assets/razorpay-checkout.js
+assets/step-stack.js
+assets/styles.css
+
+.claude
+netlify

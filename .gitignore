@@ -22,3 +22,8 @@ Thumbs.db
 *.log
 npm-debug.log*
 .cache/
+
+# Vercel local state and all environment files
+.vercel/
+.env*
+release-manifest.json

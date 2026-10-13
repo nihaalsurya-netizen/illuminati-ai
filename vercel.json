@@ -20,10 +20,42 @@
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
       ]
+    }
+  ],
+  "buildCommand": "",
+  "redirects": [
+    {
+      "source": "/services",
+      "destination": "/#services",
+      "permanent": true
+    },
+    {
+      "source": "/how-it-works",
+      "destination": "/#approach",
+      "permanent": true
+    },
+    {
+      "source": "/faq",
+      "destination": "/#questions",
+      "permanent": true
+    },
+    {
+      "source": "/hybrid-studio",
+      "destination": "/",
+      "permanent": true
     }
   ]
 }
